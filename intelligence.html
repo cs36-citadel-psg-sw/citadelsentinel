@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OSINT Fusion Center | Vigilant Monolith</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#ffbf00",
+                        "error-container": "#93000a",
+                        "surface-bright": "#3f382d",
+                        "primary-fixed-dim": "#fbbc00",
+                        "primary-fixed": "#ffdfa0",
+                        "on-tertiary-fixed": "#001f26",
+                        "surface-container": "#241f14",
+                        "tertiary-container": "#04dcff",
+                        surface: "#181309",
+                        "surface-container-lowest": "#120e05",
+                        "on-secondary-fixed-variant": "#5b4307",
+                        "secondary-fixed": "#ffdfa0",
+                        "outline-variant": "#504532",
+                        "on-secondary-fixed": "#261a00",
+                        "surface-dim": "#181309",
+                        "surface-container-highest": "#3a3428",
+                        "tertiary-fixed-dim": "#00d9fc",
+                        "surface-container-low": "#201b11",
+                        "on-primary-container": "#6d5000",
+                        outline: "#9c8f78",
+                        "surface-container-high": "#2f291e",
+                        "secondary-container": "#5d4509",
+                        "on-surface": "#ede1d0",
+                        "on-background": "#ede1d0",
+                        "on-secondary": "#402d00",
+                        error: "#ffb4ab",
+                        primary: "#ffbf00",
+                        "inverse-surface": "#ede1d0",
+                        "inverse-primary": "#795900",
+                        "on-surface-variant": "#d4c5ab",
+                        background: "#181309",
+                        "on-primary-fixed": "#261a00",
+                        "surface-tint": "#fbbc00",
+                        "tertiary-fixed": "#aaedff",
+                        "surface-variant": "#3a3428",
+                        "on-tertiary": "#003640",
+                        "inverse-on-surface": "#363024",
+                        "on-secondary-container": "#d6b46f",
+                        "on-tertiary-container": "#005d6d",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-error": "#690005",
+                        secondary: "#e5c27b",
+                        "secondary-fixed-dim": "#e5c27b",
+                        tertiary: "#b4efff",
+                        "on-primary-fixed-variant": "#5c4300",
+                        "on-primary": "#402d00",
+                        "on-error-container": "#ffdad6"
+                    },
+                    fontFamily: {
+                        headline: ["IBM Plex Mono", "monospace"],
+                        body: ["IBM Plex Mono", "monospace"],
+                        label: ["IBM Plex Mono", "monospace"],
+                        display: ["IBM Plex Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background-color: #111318;
+            font-weight: 300;
+        }
+        h1, h2, h3, h4, h5, h6, .header-text {
+            font-weight: 400 !important;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #434653;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 left-0 sticky bg-[#1a1c20] dark:bg-[#1a1c20] flex flex-col p-4 border-r border-white/5 gap-y-6 shrink-0">
+<div class="flex items-center gap-3 px-4 py-2 mb-2">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div>
+<h2 class="text-white text-sm font-normal tracking-tight">Vigilant Monolith</h2>
+<p class="text-[10px] text-on-surface-variant font-light uppercase tracking-widest">Active Monitoring</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1 flex-1">
+<a class="rounded-md px-4 py-3 flex items-center gap-3 text-xs font-normal uppercase tracking-widest hover:translate-x-1 transition-transform bg-primary-container text-on-primary-container" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="color: #FFBF00; font-size: 20px;">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-[#c3c6d6] px-4 py-3 flex items-center gap-3 hover:bg-primary/10 hover:text-primary rounded-md transition-all text-xs font-normal uppercase tracking-widest hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="public" style="color: #FFBF00; font-size: 20px;">public</span>
+                Global Intelligence
+            </a>
+<a class="text-[#c3c6d6] px-4 py-3 flex items-center gap-3 hover:bg-primary/10 hover:text-primary rounded-md transition-all text-xs font-normal uppercase tracking-widest hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="fingerprint" style="color: #FFBF00; font-size: 20px;">fingerprint</span>
+                System IDs
+            </a>
+<a class="text-[#c3c6d6] px-4 py-3 flex items-center gap-3 hover:bg-primary/10 hover:text-primary rounded-md transition-all text-xs font-normal uppercase tracking-widest hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="terminal" style="color: #FFBF00; font-size: 20px;">terminal</span>
+                Logic rules
+            </a>
+<a class="text-[#c3c6d6] px-4 py-3 flex items-center gap-3 hover:bg-primary/10 hover:text-primary rounded-md transition-all text-xs font-normal uppercase tracking-widest hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="color: #FFBF00; font-size: 20px;">inventory_2</span>
+                Archive
+            </a>
+</nav>
+<button class="bg-primary-container text-on-primary-container py-3 px-4 rounded-md font-normal text-xs uppercase tracking-widest hover:bg-primary-fixed-dim transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+            New Report
+        </button>
+<div class="mt-auto border-t border-white/5 pt-4 flex flex-col gap-1">
+<a class="text-[#c3c6d6] px-4 py-2 flex items-center gap-3 hover:bg-[#282a2e] rounded-md transition-all text-xs font-normal uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline" style="color: #FFBF00; font-size: 20px;">help_outline</span>
+                Support
+            </a>
+<a class="text-[#c3c6d6] px-4 py-2 flex items-center gap-3 hover:bg-[#282a2e] rounded-md transition-all text-xs font-normal uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="logout" style="color: #FFBF00; font-size: 20px;">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky bg-[#111318] dark:bg-[#111318] border-b border-white/5 shadow-[0_48px_0_0_rgba(17,19,24,0.06)] flex items-center justify-between px-8 py-4 z-20">
+<div class="flex items-center gap-8">
+<span class="text-xl font-normal tracking-tighter text-[#dae2ff] uppercase antialiased">OSINT Fusion Center</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary border-b-2 border-primary pb-1 antialiased tracking-tight text-sm font-normal" href="#">Intelligence</a>
+<a class="text-[#c3c6d6] hover:text-primary transition-colors antialiased tracking-tight text-sm font-normal" href="#">Threats</a>
+<a class="text-[#c3c6d6] hover:text-primary transition-colors antialiased tracking-tight text-sm font-normal" href="#">SRE Logs</a>
+<a class="text-[#c3c6d6] hover:text-primary transition-colors antialiased tracking-tight text-sm font-normal" href="#">Network</a>
+<a class="text-white hover:text-primary transition-colors antialiased tracking-tight text-sm font-normal flex items-center gap-1" href="#">
+                        Operations Management <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="bg-surface-container-high border-none rounded-md pl-10 pr-4 py-2 text-xs text-on-surface w-64 focus:ring-1 focus:ring-primary font-light" placeholder="Search vectors..." type="text"/>
+</div>
+<button class="text-[#c3c6d6] hover:text-[#dae2ff] transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications" style="color: #FFBF00; font-size: 20px;">notifications</span>
+</button>
+<button class="text-[#c3c6d6] hover:text-[#dae2ff] transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings" style="color: #FFBF00; font-size: 20px;">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary-container/30">
+<img alt="Security Commander Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwlOtUCmfqKLwb-FqfYTcZBoo769d3e0UDpcOZnHeNiveX0GVoR0xTUzlYrJ1xyur4007yr6ZuQzQDIC6ggjoDhTvgXyKRI7kMI2p1R9TlnJMw0n2alG-Cif697Ep0CBKjX66-QJFi2xQ_O2vrg3rua87bQFc9TSYg9WBe-FPvuT9FoonumfQCKX4CpE2z_tpNG4lZBJGk0cyQ_4rr2XUBIfmYaIxZTdvoEGG_yGIpoN10v-dWAQgcxoaiegDw9166tMIEBZma6S_g"/>
+</div>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-8">
+<!-- Hero Sentinel Pulse Section -->
+<div class="flex flex-col lg:flex-row gap-8 mb-12 items-start">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<div class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</div>
+<span class="text-primary text-xs font-normal uppercase tracking-[0.2em]">System Status: Vigilant</span>
+</div>
+<h1 class="text-primary-fixed text-6xl font-normal tracking-tighter mb-4 leading-tight">Citadel<br/>Command Center</h1>
+<p class="text-on-surface-variant max-w-xl text-lg leading-relaxed font-light">Cross-referencing telemetry from 4 active sectors. No immediate breach detected. Monitoring high-frequency lateral movement in Sector 7-G.</p>
+</div>
+<div class="w-full lg:w-96 bg-surface-container-low rounded-xl p-6 border border-white/5">
+<div class="flex justify-between items-end mb-6">
+<div>
+<p class="text-[10px] text-on-surface-variant font-light uppercase tracking-widest mb-1">Network Load</p>
+<p class="text-3xl font-normal text-white">42.8 GB/s</p>
+</div>
+<span class="text-primary text-xs font-normal">+12% vs last hr</span>
+</div>
+<div class="h-24 flex items-end gap-1">
+<div class="flex-1 bg-primary-container/20 h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary-container/20 h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary-container/20 h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary-container/40 h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary-container h-[90%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary-container/60 h-[65%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary-container/30 h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary-container/80 h-[85%] rounded-t-sm"></div>
+</div>
+</div>
+</div>
+<!-- Bento Grid of Intelligence -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Intelligence Report: Critical -->
+<div class="lg:col-span-2 bg-surface-container-high rounded-xl overflow-hidden border border-error-container/20 flex flex-col md:flex-row">
+<div class="w-full md:w-1/2 h-48 md:h-auto relative">
+<img alt="Cybersecurity Visual" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4VceO5DB-NdhNk4PBQa8OgvWwo-Fc13L7Z3ruhqdLqv7DpLKuSPy7TT2bmYnx_d6SzH1sflZAd2mrc0968o_mo3en7dGBNmFVu-Z436w3-XrGMDdxjutC4FjvkLawdUIHQkeoWdxXtPI2Ul38ohpwDuYaXs_WRgCMzC3dbsNeaPVF9nrCqHQpyYhzQ-vKR-jus84IpFhe8jCoXJNsTzKJG93B1vucre_S7Gdd8692NCcGFVZLMvEz8TxSrsfSgFqBif5rJ5M03ydd"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-high via-transparent to-transparent hidden md:block"></div>
+<div class="absolute top-4 left-4">
+<span class="bg-error-container text-white px-3 py-1 text-[10px] font-normal uppercase rounded tracking-widest">High Threat</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-white text-xl font-normal mb-2">Zero-Day Vector: X-901</h3>
+<p class="text-on-surface-variant text-sm line-clamp-3 mb-4 font-light">Unidentified encryption pattern detected originating from regional proxies in the Baltic sector. Potential brute-force escalation targeting core logic rules.</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-primary-container text-[8px] flex items-center justify-center border border-surface font-normal">JD</div>
+<div class="w-6 h-6 rounded-full bg-secondary-container text-[8px] flex items-center justify-center border border-surface font-normal">MS</div>
+</div>
+<button class="text-primary text-xs font-normal flex items-center gap-1 hover:underline">
+                                INVESTIGATE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- System IDs Tracker -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-white/5 flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-white font-normal text-sm tracking-tight">Active System IDs</h3>
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</div>
+<div class="space-y-4 flex-1">
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-high/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">dns</span>
+<span class="text-xs font-normal text-on-surface">NODE_ALPHA_01</span>
+</div>
+<span class="text-[10px] text-primary font-normal">SECURE</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-high/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm">hub</span>
+<span class="text-xs font-normal text-on-surface">GATEWAY_77X</span>
+</div>
+<span class="text-[10px] text-tertiary font-normal">WARNING</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-high/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error text-sm">router</span>
+<span class="text-xs font-normal text-on-surface">PROXY_CORE_9</span>
+</div>
+<span class="text-[10px] text-error font-normal">OFFLINE</span>
+</div>
+</div>
+<button class="mt-6 w-full py-2 border border-outline-variant/30 rounded text-[10px] font-normal uppercase tracking-widest text-on-surface-variant hover:bg-surface-container-highest transition-all">Manage Nodes</button>
+</div>
+<!-- SRE Logic Rules -->
+<div class="bg-surface-container-high rounded-xl p-6 border border-white/5 lg:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h3 class="text-white font-normal text-sm tracking-tight uppercase">SRE Logic: Automata</h3>
+</div>
+<div class="space-y-4 text-[11px]">
+<div class="p-3 border-l-2 border-primary-container bg-surface-container-lowest/40">
+<p class="text-primary-fixed mb-1 font-normal">RULE_ISOLATE_LATERAL</p>
+<p class="text-on-surface-variant font-light">IF move_freq &gt; 200/sec AND src == "untrusted" THEN isolate_subnet()</p>
+</div>
+<div class="p-3 border-l-2 border-outline-variant bg-surface-container-lowest/40">
+<p class="text-on-surface-variant mb-1 opacity-60 font-normal">RULE_LOG_DECRYPTION</p>
+<p class="text-on-surface-variant opacity-60 font-light">IF protocol == "ssh" AND attempts &gt; 5 THEN write_audit_log()</p>
+</div>
+<div class="p-3 border-l-2 border-tertiary-container bg-surface-container-lowest/40">
+<p class="text-tertiary mb-1 font-normal">RULE_THROTTLE_API</p>
+<p class="text-on-surface-variant font-light">IF req_size &gt; 5MB THEN apply_delay(2000ms)</p>
+</div>
+</div>
+</div>
+<!-- Threat Map Visual -->
+<div class="lg:col-span-2 h-64 bg-surface-container-low rounded-xl overflow-hidden relative border border-white/5">
+<div class="absolute inset-0 opacity-40 mix-blend-overlay">
+<img alt="World Map" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFx0tVBuYAVcbKaOxuqRzzIYLQJ8lVg49RkzqI_j29UkLfFG07qiZ7azxtTLCjqXiFiJlMffUgWN64PcvDCYxhEBe9x_yD2gw3zzv0iX9-qy6brph1WR0xu6vBnDHZiqmK4UNPX4SWboHnCa10lpTQ9iEuljrMZ9LN654HeKAnUcillDVxbx8LbEDAXp0jj4j1R6Y8vtfvf-s-50LkkFhWt853d5uJklZtefnMlrVjrk0xRRYb7xboIsIYnl-utF2fh6XJcVbgtGMW"/>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="relative">
+<div class="w-32 h-32 rounded-full border border-primary/20 animate-pulse flex items-center justify-center">
+<div class="w-16 h-16 rounded-full border border-primary/40 flex items-center justify-center">
+<div class="w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_rgba(255,191,0,0.8)]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 bg-surface-container-highest/80 backdrop-blur-md p-3 rounded-lg border border-white/10">
+<p class="text-[10px] text-primary font-normal uppercase tracking-widest mb-1">Live Feed</p>
+<p class="text-xs text-white font-light">Geolocation: 52.5200° N, 13.4050° E</p>
+</div>
+</div>
+</div>
+<!-- Footer Summary Strip -->
+<footer class="mt-12 flex flex-wrap gap-8 py-8 border-t border-white/5 items-center justify-between">
+<div class="flex gap-12">
+<div>
+<p class="text-[10px] text-on-surface-variant font-light uppercase tracking-widest mb-1">Uptime</p>
+<p class="text-white text-sm font-normal">99.998%</p>
+</div>
+<div>
+<p class="text-[10px] text-on-surface-variant font-light uppercase tracking-widest mb-1">Active Listeners</p>
+<p class="text-white text-sm font-normal">1,204</p>
+</div>
+<div>
+<p class="text-[10px] text-on-surface-variant font-light uppercase tracking-widest mb-1">Logic Rev</p>
+<p class="text-white text-sm font-normal">v4.0.2-stable</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-on-surface-variant text-[10px] uppercase font-light tracking-tighter italic">Secured by Vigilant Monolith Protocol</span>
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-sm text-primary">verified_user</span>
+</div>
+</div>
+</footer>
+</div>
+</main>
+</div>
+</body></html>

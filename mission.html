@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission Vision Charter | Citadel Sentinel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant": "#d4c5ab",
+                        "tertiary-fixed-dim": "#00d9fc",
+                        "inverse-primary": "#795900",
+                        background: "#181309",
+                        "surface-container-high": "#2f291e",
+                        "surface-container-lowest": "#120e05",
+                        "primary-container": "#ffbf00",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-primary-fixed": "#261a00",
+                        "tertiary-container": "#04dcff",
+                        tertiary: "#b4efff",
+                        "error-container": "#93000a",
+                        "secondary-container": "#5d4509",
+                        error: "#ffb4ab",
+                        "surface-variant": "#3a3428",
+                        "surface-container-highest": "#3a3428",
+                        "surface-dim": "#181309",
+                        "surface-container": "#241f14",
+                        primary: "#ffbf00",
+                        "secondary-fixed": "#ffdfa0",
+                        "inverse-on-surface": "#363024",
+                        "on-secondary-container": "#d6b46f",
+                        outline: "#9c8f78",
+                        "on-primary-container": "#6d5000",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#201b11",
+                        surface: "#181309",
+                        "on-primary-fixed-variant": "#5c4300",
+                        "on-surface": "#ede1d0",
+                        "primary-fixed": "#ffdfa0",
+                        "on-background": "#ede1d0",
+                        "inverse-surface": "#ede1d0",
+                        "surface-bright": "#3f382d",
+                        "on-secondary-fixed-variant": "#5b4307",
+                        "on-secondary": "#402d00",
+                        secondary: "#e5c27b",
+                        "secondary-fixed-dim": "#e5c27b",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-tertiary": "#003640",
+                        "tertiary-fixed": "#aaedff",
+                        "surface-tint": "#fbbc00",
+                        "outline-variant": "#504532",
+                        "on-primary": "#402d00",
+                        "on-secondary-fixed": "#261a00",
+                        "primary-fixed-dim": "#fbbc00",
+                        "on-tertiary-container": "#005d6d"
+                    },
+                    fontFamily: {
+                        headline: ["IBM Plex Mono"],
+                        body: ["IBM Plex Mono"],
+                        label: ["IBM Plex Mono"],
+                        display: ["IBM Plex Mono"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #111318;
+            color: #e2e2e8;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 300;
+        }
+        h1, h2, h3, h4, .font-bold {
+            font-weight: 400 !important;
+        }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 191, 0, 0.05) 0%, rgba(51, 53, 57, 0.8) 100%);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="antialiased font-['IBM_Plex_Mono'] font-light">
+<!-- TopNavBar -->
+<nav class="w-full sticky top-0 z-50 bg-[#111318] flex items-center justify-between px-8 h-16 shadow-[0_48px_48px_rgba(0,0,0,0.06)] antialiased tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-xl font-normal tracking-tighter text-primary">Citadel Sentinel</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-[#c3c6d6] hover:text-[#dae2ff] transition-colors active:scale-95 transition-transform text-sm" href="#">Dashboard</a>
+<a class="text-[#c3c6d6] hover:text-[#dae2ff] transition-colors active:scale-95 transition-transform text-sm" href="#">Threats</a>
+<a class="text-[#c3c6d6] hover:text-[#dae2ff] transition-colors active:scale-95 transition-transform text-sm" href="#">Intelligence</a>
+<a class="text-[#c3c6d6] hover:text-[#dae2ff] transition-colors active:scale-95 transition-transform text-sm" href="#">Garrison</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<input class="bg-surface-container-high border-none rounded-lg text-sm px-4 py-2 w-64 focus:ring-1 focus:ring-primary text-on-surface font-light" placeholder="Search parameters..." type="text"/>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-[#282a2e] transition-all duration-200 rounded-md">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-[#282a2e] transition-all duration-200 rounded-md">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 bg-primary-container flex items-center justify-center">
+<img alt="Commander Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqfH3Ik9f4owV9gmPmiXltGvHdbA_qkbYYDTAHUcILspJHwvA3whSlrE1YvSqxg1sqOQvtMhySdNC79J8QUEapElTp8pybWzXn0_BtC-FKNkfmqtgfpzYhpQir0xvvlOcffBBrhwruti4HTjcc7W1JWpNOocyBwWxVqsYr7tpmDpxtvJo1ebyRwQcrWKgys-uwKfrlWfZB_pBNocUXg7T4yRywhJFYIkBVCYgwa9RpCF4BeCr1LIXl2zGaNOilIc3hbkYruScq40fe"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 pt-16 bg-[#1a1c20] flex flex-col p-6 space-y-4 text-sm font-light z-40 hidden lg:flex">
+<div class="mb-8 mt-4">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-lg bg-[#FFBF00] flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<div class="text-lg font-normal text-on-surface leading-none">Citadel HQ</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 font-normal">Sector 7-G</div>
+</div>
+</div>
+</div>
+<nav class="flex-grow flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-normal bg-[#FFBF00]/10 rounded-md active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; color: #FFBF00; font-size: 20px;">security</span>
+                Mission Vision
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c3c6d6] hover:text-[#dae2ff] hover:bg-[#282a2e] rounded-md transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined" style="color: #FFBF00; font-size: 20px;">psychology</span>
+                Decision Logic
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c3c6d6] hover:text-[#dae2ff] hover:bg-[#282a2e] rounded-md transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined" style="color: #FFBF00; font-size: 20px;">account_tree</span>
+                Chain of Command
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c3c6d6] hover:text-[#dae2ff] hover:bg-[#282a2e] rounded-md transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined" style="color: #FFBF00; font-size: 20px;">account_balance</span>
+                Strategic Assets
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c3c6d6] hover:text-[#dae2ff] hover:bg-[#282a2e] rounded-md transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined" style="color: #FFBF00; font-size: 20px;">lock</span>
+                Vault
+            </a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 flex flex-col gap-1">
+<button class="w-full bg-[#FFBF00] text-[#261a00] py-3 rounded-md font-normal mb-4 active:scale-95 transition-all uppercase text-xs tracking-widest">
+                Deploy Protocol
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-[#c3c6d6] hover:text-[#dae2ff] hover:bg-[#282a2e] rounded-md transition-all" href="#">
+<span class="material-symbols-outlined" style="color: #FFBF00; font-size: 20px;">help_outline</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-[#c3c6d6] hover:text-[#dae2ff] hover:bg-[#282a2e] rounded-md transition-all" href="#">
+<span class="material-symbols-outlined" style="color: #FFBF00; font-size: 20px;">analytics</span>
+                System Status
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:pl-64 pt-6 min-h-screen bg-surface">
+<div class="max-w-7xl mx-auto px-8 py-12">
+<!-- Header Section -->
+<header class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<span class="px-2 py-0.5 bg-primary/10 border border-primary/20 text-primary text-[10px] font-normal tracking-[0.2em] rounded uppercase">Kyberian Supreme Court</span>
+<div class="h-[1px] w-12 bg-outline-variant/30"></div>
+<span class="text-on-surface-variant text-[10px] font-normal tracking-[0.1em] uppercase">Auth Level: Omega</span>
+</div>
+<h1 class="text-5xl lg:text-7xl font-normal tracking-tighter text-on-surface mb-4">Mission Vision Charter</h1>
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed font-light">The foundational directive governing the Citadel Sentinel ecosystem. Absolute sovereignty through automated vigilance and ethical algorithmic enforcement.</p>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#FFBF00]"></div>
+<span class="text-xs font-normal text-primary tracking-widest uppercase">Sentinel Pulse: Active</span>
+</div>
+<span class="text-[10px] text-outline tracking-tighter font-light">Last Ratified: 2048.09.12 // Hash: 0x82...F92</span>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Section 1: How We Protect -->
+<div class="md:col-span-8 group">
+<div class="h-full bg-surface-container-low p-8 rounded-xl border border-transparent hover:border-primary/20 transition-all duration-500 overflow-hidden relative">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-[80px] group-hover:bg-primary/10 transition-colors"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+<h2 class="text-2xl font-normal text-primary-fixed tracking-tight">How We Protect</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div>
+<h3 class="text-sm font-normal text-on-surface mb-2 uppercase tracking-widest">Active Interdiction</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed font-light">Real-time neural pattern recognition identifies hostile intent before packet delivery. Neutralization is executed at the edge, maintaining zero-latency defense perimeters.</p>
+</div>
+<div>
+<h3 class="text-sm font-normal text-on-surface mb-2 uppercase tracking-widest">Redundant Citadel</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed font-light">A distributed consensus of 1,024 secure nodes verifies every governance shift, ensuring no single point of failure in the Kyberian defense architecture.</p>
+</div>
+<div>
+<h3 class="text-sm font-normal text-on-surface mb-2 uppercase tracking-widest">Triage Optimization</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed font-light">AI-driven prioritization reduces triage latency by 94%, ensuring critical assets receive sentinel focus within 2ms of threat emergence.</p>
+</div>
+<div>
+<h3 class="text-sm font-normal text-on-surface mb-2 uppercase tracking-widest">Quantum Hardening</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed font-light">Post-quantum cryptographic layers protect data sovereignty against both current and theoretical compute-based decryption attacks.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Measuring Sovereignty (The Math) -->
+<div class="md:col-span-4 group">
+<div class="h-full bg-[#FFBF00] p-8 rounded-xl relative overflow-hidden flex flex-col justify-between">
+<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-[#261a00] text-3xl">calculate</span>
+<h2 class="text-2xl font-normal text-[#261a00] tracking-tight">Sovereignty Index</h2>
+</div>
+<p class="text-[#261a00]/80 text-sm mb-8 leading-relaxed font-light">The core metric defining the health of our autonomous defense network. Ratio of automated neutralized threats to total attempts.</p>
+<div class="glass-card p-6 rounded-lg mb-6 border border-white/10">
+<div class="text-center">
+<div class="text-3xl font-normal text-[#261a00] mb-2 tracking-widest">Si = (Ans / At) × 100</div>
+<div class="h-[1px] w-full bg-[#261a00]/20 my-4"></div>
+<div class="grid grid-cols-2 gap-4 text-[10px] font-normal uppercase tracking-widest">
+<div class="text-[#261a00]">Ans: Neutralized</div>
+<div class="text-[#261a00]">At: Total Threats</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 flex items-end justify-between">
+<div>
+<div class="text-xs text-[#261a00] opacity-60 uppercase font-normal tracking-widest">Current Index</div>
+<div class="text-3xl font-normal text-[#261a00] mb-2 tracking-widest">99.98%</div>
+</div>
+<span class="material-symbols-outlined text-[#261a00]/20 text-6xl">trending_up</span>
+</div>
+</div>
+</div>
+<!-- Section 3: Ethical Filter -->
+<div class="md:col-span-5 group">
+<div class="h-full bg-surface-container-high p-8 rounded-xl border border-transparent hover:border-primary/20 transition-all duration-500">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">gavel</span>
+<h2 class="text-2xl font-normal text-on-surface tracking-tight">Ethical Filter</h2>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="text-primary font-normal">01</div>
+<div>
+<h4 class="text-sm font-normal text-on-surface">Non-Collateral Directive</h4>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed font-light">Sentinels must calculate zero-probability of impact on neutral civilian sub-nets before interdiction.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="text-primary font-normal">02</div>
+<div>
+<h4 class="text-sm font-normal text-on-surface">Immutable Privacy Shield</h4>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed font-light">Deep packet inspection is strictly ephemeral; neural metadata is purged within 300ms of verification.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="text-primary font-normal">03</div>
+<div>
+<h4 class="text-sm font-normal text-on-surface">Supreme Court Oversight</h4>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed font-light">Every algorithmic bias shift is logged to the Kyberian public ledger for human-led judicial review.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Commitment & Visual Anchor -->
+<div class="md:col-span-7 group">
+<div class="h-full relative rounded-xl overflow-hidden min-h-[400px]">
+<img alt="Commitment Visual" class="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLGZ5RLuYQhoMCuTGJpy3gXbZC7UTJ_JsLRQjpOGPID4blJdOEq-iBfhG_D4epuBEGwRijrmYZVPnux-8S3-PhYwasTBV3OAx_18tjGtfZ17Dt58ZxkQw8NVsLZ7gGc0Q5YtaT8ZEul35K61mzYRWePNCeTAjlePTENNnLS4kwc4K5GFBnFVYk8_T4rJN30IcwQiCTTDNcpGKU1CG_0MutT-DIZGQfH34JyI0rk1GSP1dj8GsGCO4WoOp9mDzsfKSSMH6a_DS7Yyxs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#1a1c20] via-[#1a1c20]/60 to-transparent p-8 flex flex-col justify-end">
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">handshake</span>
+<h2 class="text-2xl font-normal text-white tracking-tight">Our Commitment</h2>
+</div>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-xl mb-6 font-light italic">
+                                    "We pledge to maintain the digital perimeter of Kyberia with unyielding precision, ensuring that the sovereign rights of our users remain untainted by malicious actors or algorithmic overreach."
+                                </p>
+<div class="flex items-center gap-6">
+<div class="flex -space-x-2">
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-highest overflow-hidden">
+<img alt="Justice A" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf8aQtKp4rlhv8MUt8ayDIlZivKb8XnQ6m1uI3Bp-aSTVDY5hud6LB8Z4mshzVxwfiOjYafQb6_MRppCg6cQ7wC72PgKOfrMTP2Boue9RbnoLUuqEV7_DISEjTwGJE9FHWpwRs-8rUqoz_2Fp_VIDR4tlm9eJXV4lKIBVOB2jB14Mtjf-QDHjq_US6EB44YRpJ3UO7CRPfrDoWMteJExMM_MOx6-MNayWSE4RNnO0ZsXlHcKB5Nw7u2zD83HLQaWZKNfZ6SUeOp_Ni"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-highest overflow-hidden">
+<img alt="Justice B" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdRicL50ko1H10JcRpiPDRbr_0wJFg9mSE59K_8DI-m_VRnyZLVZ5fh0x_K_lTqsNaoGjp_3nL7WZE-5LVpGgYS9dbGvc-Nw7XpK3N1EDQZhsi0_i2TDLA1Q9XAWP9elBW93wKxPugsihASrU79vrHlTqwbV4FG61ZNBoWPBK1N4Lq3SKJ-8kpPZi0VBrDpIo7sh71HFW9dWC9AMwz7GhRMpnPYJFlStdmi8cBQOAleoYyRu4-swr35kxgP3EzFNYvQwkSF-I7PB_D"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-highest overflow-hidden">
+<img alt="Justice C" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdoua7FnhBIeHfoNtUlaN87ikMiEi_qn4sCYoAu2776XO2Acr4LelF-TTmKCve5tlIaakpOvV5-PIw4bL3fXLg4Z3124yXRZieC3JE9oj6HBfdYLccUiZBsmzlHw902STOIRYdXYejcwAD6IMawIgPCZ3diFw-aNj_B3HcURueOWQn0IE8t67ic0SixTlH8RYJc8jJFRp0UQOvUWycHFR_EhBdzEVZ-KXau17fXBS6d7x2jNIDnraWGH8wcDuAGNR6DIz8d-es2xP2"/>
+</div>
+</div>
+<span class="text-[10px] font-normal text-on-surface-variant tracking-widest uppercase">Unanimously Ratified by the High Council</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Footer / System Ticker -->
+<footer class="mt-20 pt-12 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-12">
+<div>
+<div class="text-[10px] font-normal text-on-surface-variant uppercase tracking-[0.2em] mb-1">Garrison Status</div>
+<div class="text-sm text-primary font-normal">STABLE [94,021 NODES]</div>
+</div>
+<div>
+<div class="text-[10px] font-normal text-on-surface-variant uppercase tracking-[0.2em] mb-1">Operations Management</div>
+<div class="text-sm text-on-surface font-normal uppercase">Active Protocol 07</div>
+</div>
+<div>
+<div class="text-[10px] font-normal text-on-surface-variant uppercase tracking-[0.2em] mb-1">Encryption</div>
+<div class="text-sm text-on-surface font-normal">AES-8192-SHIELD</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2 bg-surface-container-high hover:bg-surface-container-highest text-primary text-xs font-normal rounded uppercase tracking-widest transition-all">Print Charter</button>
+<button class="px-6 py-2 bg-[#FFBF00] text-[#261a00] text-xs font-normal rounded uppercase tracking-widest transition-all shadow-[0_4px_12px_rgba(255,191,0,0.3)]">Verify Signature</button>
+</div>
+</footer>
+</div>
+</main>
+</body></html>

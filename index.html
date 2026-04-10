@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Citadel Sentinel - Operations Management Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#ede1d0",
+                        "tertiary-fixed": "#aaedff",
+                        "surface-container-high": "#2f291e",
+                        "surface-dim": "#181309",
+                        "surface-container-lowest": "#120e05",
+                        "inverse-on-surface": "#363024",
+                        "on-background": "#ede1d0",
+                        "surface-container-highest": "#3a3428",
+                        primary: "#ffbf00", // Tactical Amber
+                        "on-secondary-container": "#d6b46f",
+                        "inverse-surface": "#ede1d0",
+                        "on-secondary-fixed-variant": "#5b4307",
+                        "surface-tint": "#ffbf00",
+                        "secondary-container": "#5d4509",
+                        "surface-container-low": "#201b11",
+                        "secondary-fixed": "#ffdfa0",
+                        "on-error": "#690005",
+                        "on-tertiary": "#003640",
+                        "on-secondary-fixed": "#261a00",
+                        background: "#181309",
+                        "surface-variant": "#3a3428",
+                        "surface-container": "#241f14",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-tertiary-container": "#005d6d",
+                        tertiary: "#b4efff",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#795900",
+                        "on-tertiary-fixed": "#001f26",
+                        "primary-fixed-dim": "#ffbf00",
+                        "tertiary-fixed-dim": "#00d9fc",
+                        "on-secondary": "#402d00",
+                        "on-primary-fixed-variant": "#5c4300",
+                        secondary: "#e5c27b",
+                        "primary-fixed": "#ffdfa0",
+                        error: "#ffb4ab",
+                        "on-surface-variant": "#d4c5ab",
+                        "on-primary": "#402d00",
+                        "surface-bright": "#3f382d",
+                        "outline-variant": "#504532",
+                        surface: "#181309",
+                        "secondary-fixed-dim": "#e5c27b",
+                        "on-primary-container": "#6d5000",
+                        outline: "#9c8f78",
+                        "primary-container": "#ffbf00",
+                        "tertiary-container": "#04dcff",
+                        "on-primary-fixed": "#261a00"
+                    },
+                    fontFamily: {
+                        headline: ["'IBM Plex Mono'", "monospace"],
+                        body: ["'IBM Plex Mono'", "monospace"],
+                        label: ["'IBM Plex Mono'", "monospace"],
+                        display: ["'IBM Plex Mono'", "monospace"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        body { font-family: 'IBM Plex Mono', monospace; background-color: #111318; color: #e2e2e8; font-weight: 300; }
+        h1, h2, h3, h4, h5, h6, .font-bold { font-weight: 400 !important; }
+        .label-sm, .text-xs, .text-\[10px\], .text-on-surface-variant { font-weight: 300 !important; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-glass { background: linear-gradient(135deg, rgba(255, 191, 0, 0.05) 0%, rgba(51, 53, 57, 0.8) 100%); backdrop-filter: blur(20px); }
+        .pulse-glow { animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(255, 191, 0, 0.4); } 50% { opacity: .7; box-shadow: 0 0 5px rgba(255, 191, 0, 0.1); } }
+    </style>
+</head>
+<body class="antialiased overflow-hidden selection:bg-primary/30 selection:text-white">
+<header class="w-full sticky top-0 z-50 bg-[#1a1c20] shadow-[0_48px_48px_0_rgba(17,19,24,0.06)] h-16 flex items-center justify-between px-8 antialiased tracking-tight text-sm font-light">
+<div class="flex items-center gap-8">
+<span class="text-xl font-normal tracking-tighter text-[#dae2ff]">Citadel Sentinel</span>
+<nav class="hidden md:flex items-center space-x-8 h-full">
+<a class="text-[#c3c6d6] hover:text-[#dae2ff] transition-colors" href="#">Dashboard</a>
+<a class="text-[#c3c6d6] hover:text-[#dae2ff] transition-colors" href="#">Threats</a>
+<a class="text-[#c3c6d6] hover:text-[#dae2ff] transition-colors" href="#">Intelligence</a>
+<a class="text-primary border-b-2 border-primary pb-1" href="#">Garrison</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<input class="bg-surface-container-high border-none rounded-md px-4 py-1.5 text-xs w-64 focus:ring-1 focus:ring-primary transition-all font-light" placeholder="Search parameters..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1.5 text-on-surface-variant text-sm text-[20px]" data-icon="search" style="color: #FFBF00; font-size: 20px;">search</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-[#282a2e] p-2 rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications" style="color: #FFBF00; font-size: 20px;">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-[#282a2e] p-2 rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings" style="color: #FFBF00; font-size: 20px;">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Commander Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a serious military intelligence officer with sharp features and analytical gaze in low key dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUJWgXKYZ02iU5zL3utQuF2x4QaHVoQseVW5btuJEUtxSD5wECy8TzYJ49zhsVXRH_G_zvlOILjY7iVHXBHNR0Gm7wlDCJHHFEMa9_R1wtiQ_MSseNTwA8C60j3NkcVozmXFDq-7njA4RONpGrDksnRyD6DfITvIeYvkGIArmcV6xkMH7weghAQYHVzcGVQtCyt01cG35MNvYuq0OkUmv2x1joA_zs2jt7F4nGkhgPAavDzeR1ekKujN0cQ0BKlc-aFlbJy01oBSPL"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-64px)] overflow-hidden">
+<aside class="h-full w-72 bg-[#1a1c20] flex flex-col p-6 space-y-4 overflow-y-auto shrink-0">
+<div class="mb-8 flex items-center gap-3">
+<div class="h-10 w-10 bg-primary-container rounded flex items-center justify-center text-on-primary-container" style="font-variation-settings: 'FILL' 1; box-shadow: 0 0 12px rgba(255, 191, 0, 0.3);">
+<span class="material-symbols-outlined text-[20px]" data-icon="security" style="font-size: 20px;">security</span>
+</div>
+<div>
+<h2 class="text-[#dae2ff] font-normal text-xs tracking-wide uppercase">Operations</h2>
+<p class="text-[10px] text-on-surface-variant tracking-widest uppercase">Vigilant Monolith</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-xs font-light tracking-wide uppercase text-[#c3c6d6] hover:bg-[#282a2e] rounded-md hover:translate-x-1 transition-transform duration-200 cursor-pointer select-none" href="#">
+<span class="material-symbols-outlined text-lg text-[20px]" data-icon="visibility" style="color: #FFBF00; font-size: 20px;">visibility</span> Mission Vision Charter
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-xs font-light tracking-wide uppercase text-[#c3c6d6] hover:bg-[#282a2e] rounded-md hover:translate-x-1 transition-transform duration-200 cursor-pointer select-none" href="#">
+<span class="material-symbols-outlined text-lg text-[20px]" data-icon="psychology" style="color: #FFBF00; font-size: 20px;">psychology</span> Decision Logic
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-xs font-light tracking-wide uppercase text-[#c3c6d6] hover:bg-[#282a2e] rounded-md hover:translate-x-1 transition-transform duration-200 cursor-pointer select-none" href="#">
+<span class="material-symbols-outlined text-lg text-[20px]" data-icon="gavel" style="color: #FFBF00; font-size: 20px;">gavel</span> Kyberian Doctrine
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-xs font-light tracking-wide uppercase text-[#c3c6d6] hover:bg-[#282a2e] rounded-md hover:translate-x-1 transition-transform duration-200 cursor-pointer select-none" href="#">
+<span class="material-symbols-outlined text-lg text-[20px]" data-icon="history_edu" style="color: #FFBF00; font-size: 20px;">history_edu</span> Legacy Planning
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-xs font-light tracking-wide uppercase text-[#c3c6d6] hover:bg-[#282a2e] rounded-md hover:translate-x-1 transition-transform duration-200 cursor-pointer select-none" href="#">
+<span class="material-symbols-outlined text-lg text-[20px]" data-icon="biotech" style="color: #FFBF00; font-size: 20px;">biotech</span> Intelligence & Analysis
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-xs font-normal tracking-wide uppercase rounded-md shadow-[0_0_12px_rgba(255,191,0,0.3)] cursor-pointer select-none bg-primary text-black" href="#">
+<span class="material-symbols-outlined text-lg text-[20px]" data-icon="settings_applications" style="font-size: 20px;">settings_applications</span> Operations Management
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-xs font-light tracking-wide uppercase text-[#c3c6d6] hover:bg-[#282a2e] rounded-md hover:translate-x-1 transition-transform duration-200 cursor-pointer select-none" href="#">
+<span class="material-symbols-outlined text-lg text-[20px]" data-icon="admin_panel_settings" style="color: #FFBF00; font-size: 20px;">admin_panel_settings</span> Security & Infrastructure
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-xs font-light tracking-wide uppercase text-[#c3c6d6] hover:bg-[#282a2e] rounded-md hover:translate-x-1 transition-transform duration-200 cursor-pointer select-none" href="#">
+<span class="material-symbols-outlined text-lg text-[20px]" data-icon="hub" style="color: #FFBF00; font-size: 20px;">hub</span> System Architecture
+            </a>
+</nav>
+<div class="pt-6 border-t border-outline-variant/10 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2 text-[10px] font-light tracking-wide uppercase text-[#c3c6d6] hover:bg-[#282a2e] rounded-md transition-all" href="#">
+<span class="material-symbols-outlined text-base text-[20px]" data-icon="shield_with_heart" style="color: #FFBF00; font-size: 20px;">shield_with_heart</span> System Status
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-[10px] font-light tracking-wide uppercase text-[#c3c6d6] hover:bg-[#282a2e] rounded-md transition-all" href="#">
+<span class="material-symbols-outlined text-base text-[20px]" data-icon="help_center" style="color: #FFBF00; font-size: 20px;">help_center</span> Support
+            </a>
+</div>
+</aside>
+<main class="flex-1 bg-[#111318] overflow-y-auto p-8 relative">
+<div class="mb-12 flex justify-between items-end">
+<div>
+<span class="label-sm text-primary uppercase tracking-[0.2em] font-light mb-2 block">Central Command Engine</span>
+<h1 class="text-[3.5rem] font-normal tracking-tighter text-[#dae2ff] leading-none mb-4">Operations Management</h1>
+<div class="flex gap-6 items-center">
+<div class="flex items-center gap-2">
+<div class="h-3 w-3 rounded-full bg-primary pulse-glow"></div>
+<span class="text-xs font-light text-on-surface uppercase tracking-wider">Vigilance Level: Absolute</span>
+</div>
+<div class="h-4 w-px bg-outline-variant/30"></div>
+<p class="text-on-surface-variant text-sm max-w-md font-light">Orchestrating the Vanguard Layer across the Kyberian Doctrine frameworks.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="bg-primary-container text-on-primary-container px-6 py-3 rounded-lg text-xs font-normal uppercase tracking-widest flex items-center gap-2 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-lg text-[20px]" data-icon="bolt" style="font-size: 20px;">bolt</span> Deploy Protocol
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-6 auto-rows-fr">
+<div class="col-span-12 lg:col-span-8 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between overflow-hidden relative group">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none transition-transform duration-1000 group-hover:scale-110">
+<img alt="Abstract Tech" class="w-full h-full object-cover grayscale brightness-50" data-alt="futuristic digital world map mesh in glowing blue lines against a dark background with data points" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb7nSTxHNeL0m2xc1Qm4gg7exrlNIc85Fb_DeQorKIbdrExVcdsFcYkH6CjXoE98WI9KUbCfWVpsHyWXvU4iTHCL0ZHUwnUt2bOPpaADfHdhDGtR1zxtAropTPZUOEvxfU0SYtko2ZjGKeFDmSFEBUE4xAZY5HMizh68IkW8vTuGzDllNQXr9nRQ1HSVq4i5N_1pkNRZ12lUqHX4q4f3vDJEojQJgkchXJabkljRgDnZPLfJi6pD1vYGNiM2TH4-F-dSYFuJpoSohB"/>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="explore" style="color: #FFBF00; font-size: 20px;">explore</span>
+<h3 class="text-2xl font-normal text-white tracking-tight">Mission Vision Charter</h3>
+</div>
+<p class="text-on-surface-variant max-w-lg mb-8 text-lg leading-relaxed font-light">The North Star protocol ensures all tactical executions align with the foundation of the Citadel. We maintain absolute dominance through precision intelligence and preemptive strike capabilities.</p>
+</div>
+<div class="flex gap-12 relative z-10">
+<div>
+<span class="label-sm text-on-surface-variant uppercase tracking-widest mb-1 block">Primary Directive</span>
+<span class="text-primary font-normal">Project Vanguard</span>
+</div>
+<div>
+<span class="label-sm text-on-surface-variant uppercase tracking-widest mb-1 block">Global Sync</span>
+<span class="text-white font-light">99.999%</span>
+</div>
+<div>
+<span class="label-sm text-on-surface-variant uppercase tracking-widest mb-1 block">Status</span>
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-normal uppercase rounded">Nominal</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container-high rounded-xl p-6 border-l-4 border-error/50">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[20px]" data-icon="gavel" style="color: #FFBF00; font-size: 20px;">gavel</span>
+<h3 class="text-sm font-normal uppercase tracking-widest">Decision Logic</h3>
+</div>
+<span class="text-[10px] font-normal text-error bg-error/10 px-2 py-1 rounded">2 Refutations</span>
+</div>
+<div class="space-y-4">
+<div class="p-3 bg-surface-dim rounded-lg">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-normal text-on-surface">Veto 0x882</span>
+<span class="text-[9px] text-on-surface-variant">2m ago</span>
+</div>
+<p class="text-[11px] text-on-surface-variant font-light">Asset liquiditation blocked: Kyberian Article 4 conflict detected in zone-B.</p>
+</div>
+<div class="p-3 bg-surface-dim rounded-lg">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-normal text-on-surface">Veto 0x114</span>
+<span class="text-[9px] text-on-surface-variant">14h ago</span>
+</div>
+<p class="text-[11px] text-on-surface-variant font-light">Redline protocol bypass attempt refuted by System Architecture core.</p>
+</div>
+</div>
+<button class="w-full mt-6 py-2 text-[10px] font-normal uppercase tracking-[0.2em] text-on-surface-variant hover:text-white transition-colors">Review Full Audit Log</button>
+</div>
+<div class="col-span-12 lg:col-span-6 custom-glass rounded-xl p-8 border border-white/5">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-xl font-normal text-white tracking-tighter">Intelligence & Analysis</h3>
+<p class="text-xs text-primary/80 font-light uppercase tracking-tighter">OSINT Fusion Center • inTIME Engine</p>
+</div>
+<span class="material-symbols-outlined text-3xl text-primary/40 text-[20px]" data-icon="biotech" style="color: #FFBF00; font-size: 20px;">biotech</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest/50 p-4 rounded-lg">
+<span class="label-sm text-on-surface-variant block mb-2">Neural Processing</span>
+<div class="flex items-end gap-2">
+<span class="text-2xl font-normal text-white">412.8</span>
+<span class="text-[10px] text-primary mb-1">Th/sec</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest/50 p-4 rounded-lg">
+<span class="label-sm text-on-surface-variant block mb-2">OSINT Accuracy</span>
+<div class="flex items-end gap-2">
+<span class="text-2xl font-normal text-white">98.4%</span>
+<span class="text-[10px] text-primary mb-1">Confidence</span>
+</div>
+</div>
+</div>
+<div class="mt-8 space-y-4">
+<div class="flex items-center justify-between text-xs font-light">
+<span class="text-on-surface-variant">Vanguard Layer Sync</span>
+<span class="text-primary font-normal">Synchronizing...</span>
+</div>
+<div class="w-full h-1 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[72%]"></div>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-3 bg-surface-container-low rounded-xl p-6 flex flex-col">
+<h3 class="text-xs font-normal uppercase tracking-widest text-on-surface-variant mb-6">Kyberian Doctrine</h3>
+<div class="space-y-6 flex-1">
+<div class="flex items-center gap-4">
+<div class="w-1.5 h-12 bg-primary rounded-full"></div>
+<div>
+<h4 class="text-sm font-normal text-white">Shadow Protocol</h4>
+<p class="text-[10px] text-on-surface-variant font-light">Active • Stealth Tier 1</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-1.5 h-12 bg-outline-variant/30 rounded-full"></div>
+<div>
+<h4 class="text-sm font-normal text-white">Iron Curtain</h4>
+<p class="text-[10px] text-on-surface-variant font-light">Standby • Defensive</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-1.5 h-12 bg-outline-variant/30 rounded-full"></div>
+<div>
+<h4 class="text-sm font-normal text-white">Echo Chamber</h4>
+<p class="text-[10px] text-on-surface-variant font-light">Passive • Analytics</p>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant/10">
+<span class="text-[10px] text-primary/60 font-light">Updated 30s ago via Garrison Core</span>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-3 bg-surface-container-low rounded-xl p-6">
+<h3 class="text-xs font-normal uppercase tracking-widest text-on-surface-variant mb-6">Legacy Planning</h3>
+<div class="flex flex-col items-center justify-center h-full pb-6">
+<div class="relative w-24 h-24 mb-6">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="37.68" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-xl font-normal text-white">85%</span>
+<span class="text-[8px] uppercase tracking-tighter text-on-surface-variant font-light">Audit</span>
+</div>
+</div>
+<div class="text-center">
+<p class="text-xs font-normal text-white mb-1">Awaiting Sync</p>
+<p class="text-[10px] text-on-surface-variant font-light">3 Modules require authentication</p>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-9 bg-surface-container-low rounded-xl p-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-2xl font-normal text-white tracking-tight">Security & Infrastructure</h3>
+<p class="text-xs text-on-surface-variant font-light">System Telemetry • Perimeter Security</p>
+</div>
+<div class="flex gap-2">
+<div class="px-3 py-1 bg-surface-container-highest rounded text-[10px] font-normal text-on-surface-variant uppercase">Node-7: STABLE</div>
+<div class="px-3 py-1 bg-surface-container-highest rounded text-[10px] font-normal text-on-surface-variant uppercase">Zone-A: ENCRYPTED</div>
+</div>
+</div>
+<div class="h-32 w-full flex items-end gap-1 mb-6">
+<div class="flex-1 bg-primary/20 h-[60%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[80%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[50%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[90%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[100%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[75%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[40%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[65%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[55%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[85%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[70%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[45%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[30%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[60%] hover:bg-primary transition-all rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[95%] hover:bg-primary transition-all rounded-t-sm"></div>
+</div>
+<div class="grid grid-cols-3 gap-8">
+<div>
+<span class="label-sm text-on-surface-variant uppercase mb-2 block">Packet Inspection</span>
+<span class="text-xl font-normal text-white">4.2 PB/day</span>
+</div>
+<div>
+<span class="label-sm text-on-surface-variant uppercase mb-2 block">Threat Deflection</span>
+<span class="text-xl font-normal text-white">2.8M blocked</span>
+</div>
+<div>
+<span class="label-sm text-on-surface-variant uppercase mb-2 block">Latency (Global)</span>
+<span class="text-xl font-normal text-primary">12ms</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-3 bg-surface-container-high rounded-xl p-6 flex flex-col justify-between">
+<div>
+<h3 class="text-xs font-normal uppercase tracking-widest text-on-surface-variant mb-6">System Architecture</h3>
+<div class="flex flex-col gap-4">
+<div class="bg-surface-dim p-4 rounded-lg border border-primary/20">
+<span class="text-[10px] text-primary font-normal uppercase block mb-1">Dual-Zone Execution</span>
+<p class="text-xs text-on-surface font-light">Ecosystem Schema: V4.2</p>
+</div>
+<div class="bg-surface-dim p-4 rounded-lg border border-outline-variant/10">
+<span class="text-[10px] text-on-surface-variant font-normal uppercase block mb-1">Vanguard Bridge</span>
+<p class="text-xs text-on-surface font-light">Connection: SECURE</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 bg-surface-container-highest rounded-lg text-xs font-normal uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all">
+                    View Schema Map
+                </button>
+</div>
+</div>
+</main>
+</div>
+<div class="fixed bottom-8 right-8 z-[100]">
+<button class="h-14 w-14 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-[0_0_24px_rgba(255,191,0,0.4)] hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl text-[20px]" data-icon="terminal" style="font-size: 20px;">terminal</span>
+</button>
+</div>
+</body></html>

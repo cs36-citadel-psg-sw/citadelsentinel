@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MONOLITH_OS | CITADEL_SENTINEL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class", 
+        theme: {
+            extend: {
+                colors: {
+                    "tertiary-fixed-dim": "#00d9fc", 
+                    "on-error-container": "#ffdad6", 
+                    "tertiary-container": "#04dcff", 
+                    "surface-variant": "#3a3428", 
+                    "on-primary-fixed-variant": "#5c4300", 
+                    "on-tertiary-container": "#005d6d", 
+                    "on-primary-container": "#6d5000", 
+                    "on-primary": "#402d00", 
+                    "surface-bright": "#3f382d", 
+                    tertiary: "#b4efff", 
+                    "error-container": "#93000a", 
+                    "inverse-surface": "#ede1d0", 
+                    background: "#181309", 
+                    "on-secondary-fixed": "#261a00", 
+                    "surface-container-highest": "#3a3428", 
+                    "primary-fixed-dim": "#fbbc00", 
+                    primary: "#ffe2ab", 
+                    "secondary-fixed-dim": "#e5c27b", 
+                    "on-secondary-fixed-variant": "#5b4307", 
+                    "surface-container-high": "#2f291e", 
+                    "outline-variant": "#504532", 
+                    "on-tertiary-fixed": "#001f26", 
+                    "on-surface-variant": "#d4c5ab", 
+                    "surface-dim": "#181309", 
+                    "inverse-primary": "#795900", 
+                    "primary-container": "#ffbf00", 
+                    "on-tertiary-fixed-variant": "#004e5c", 
+                    "surface-tint": "#fbbc00", 
+                    "on-secondary": "#402d00", 
+                    "on-surface": "#ede1d0", 
+                    outline: "#9c8f78", 
+                    "surface-container-lowest": "#120e05", 
+                    "on-background": "#ede1d0", 
+                    "tertiary-fixed": "#aaedff", 
+                    "on-primary-fixed": "#261a00", 
+                    "primary-fixed": "#ffdfa0", 
+                    "inverse-on-surface": "#363024", 
+                    error: "#ffb4ab", 
+                    "secondary-fixed": "#ffdfa0", 
+                    "on-tertiary": "#003640", 
+                    "surface-container-low": "#201b11", 
+                    "secondary-container": "#5d4509", 
+                    "on-error": "#690005", 
+                    secondary: "#e5c27b", 
+                    "on-secondary-container": "#d6b46f", 
+                    "surface-container": "#241f14", 
+                    surface: "#181309"
+                }, 
+                fontFamily: {
+                    headline: ["IBM Plex Mono", "monospace"], 
+                    body: ["IBM Plex Mono", "monospace"], 
+                    label: ["IBM Plex Mono", "monospace"], 
+                    display: ["IBM Plex Mono", "monospace"]
+                }, 
+                borderRadius: {
+                    DEFAULT: "0.125rem", 
+                    lg: "0.25rem", 
+                    xl: "0.5rem", 
+                    full: "0.75rem"
+                }
+            }
+        }
+    };
+    </script>
+<style>
+        body {
+            background-color: #111318;
+            color: #e2e2e8;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .font-headline {
+            font-family: 'IBM Plex Mono', monospace !important;
+            font-weight: 400 !important;
+        }
+        .text-xs, .text-\[10px\], .label, .font-body {
+            font-family: 'IBM Plex Mono', monospace !important;
+            font-weight: 300 !important;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sentinel-pulse {
+            position: relative;
+        }
+        .sentinel-pulse::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #ffbf00;
+            opacity: 0.4;
+            filter: blur(4px);
+            z-index: -1;
+        }
+        /* Tactical Amber Accents Override */
+        .text-primary, .text-primary-fixed {
+            color: #ffbf00 !important;
+        }
+        .bg-primary-container {
+            background-color: #ffbf00 !important;
+            color: #111318 !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#111318] h-16 flex justify-between items-center w-full px-6 transition-all duration-200 border-b border-outline-variant/10">
+<div class="flex items-center gap-8">
+<span class="text-xl font-normal tracking-tighter text-primary">MONOLITH_OS</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="tracking-tighter uppercase text-xs text-[#c3c6d6] hover:text-primary transition-colors" href="#">THREAT_INTEL</a>
+<a class="tracking-tighter uppercase text-xs text-[#c3c6d6] hover:text-primary transition-colors" href="#">NETWORK_MAP</a>
+<a class="tracking-tighter uppercase text-xs text-primary border-b border-primary pb-1" href="#">SYSTEM_HEALTH</a>
+<a class="tracking-tighter uppercase text-xs text-[#c3c6d6] hover:text-primary transition-colors" href="#">VAULT</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-surface-container-high px-3 py-1.5 rounded-md border-b border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs p-0 w-48 text-on-surface placeholder:text-on-surface-variant/50" placeholder="QUERY_CORE..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-[#c3c6d6] hover:text-primary transition-all duration-200 rounded-md">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</button>
+<button class="p-2 text-[#c3c6d6] hover:text-primary transition-all duration-200 rounded-md">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="p-2 text-[#c3c6d6] hover:text-primary transition-all duration-200 rounded-md">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-64 p-4 border-r border-[#333539]/15 bg-[#1a1c20] z-40">
+<div class="mb-8 px-4">
+<h2 class="text-lg text-[#dae2ff]">CYBER_COMMAND</h2>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">Sector_7G</p>
+</div>
+<nav class="flex-grow space-y-2">
+<a class="flex items-center gap-3 text-[#c3c6d6] px-4 py-3 hover:bg-[#282a2e] rounded-md transition-transform duration-200 hover:translate-x-1 text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="color: #FFBF00; font-size: 20px;">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 text-[#c3c6d6] px-4 py-3 hover:bg-[#282a2e] rounded-md transition-transform duration-200 hover:translate-x-1 text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="analytics" style="color: #FFBF00; font-size: 20px;">analytics</span>
+<span>Node_Telemetry</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container text-[#111318] rounded-md px-4 py-3 text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="enhanced_encryption" style="color: #FFBF00; font-size: 20px; font-variation-settings: 'FILL' 1;">enhanced_encryption</span>
+<span>Encryption_Logs</span>
+</a>
+<a class="flex items-center gap-3 text-[#c3c6d6] px-4 py-3 hover:bg-[#282a2e] rounded-md transition-transform duration-200 hover:translate-x-1 text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings" style="color: #FFBF00; font-size: 20px;">admin_panel_settings</span>
+<span>Access_Control</span>
+</a>
+<a class="flex items-center gap-3 text-[#c3c6d6] px-4 py-3 hover:bg-[#282a2e] rounded-md transition-transform duration-200 hover:translate-x-1 text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu" style="color: #FFBF00; font-size: 20px;">history_edu</span>
+<span>Audit_Trail</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant/10 pt-4 space-y-1">
+<button class="w-full mb-4 bg-primary-container text-on-primary-container py-2.5 rounded-lg text-xs tracking-widest uppercase hover:opacity-90 transition-opacity">
+                INITIATE_SCAN
+            </button>
+<a class="flex items-center gap-3 text-[#c3c6d6] px-4 py-2 hover:bg-[#282a2e] rounded-md text-xs" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help_outline" style="color: #FFBF00; font-size: 20px;">help_outline</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 text-[#c3c6d6] px-4 py-2 hover:bg-[#282a2e] rounded-md text-xs" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="description" style="color: #FFBF00; font-size: 20px;">description</span>
+<span>Documentation</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-8 min-h-[calc(100vh-64px)] pb-24">
+<!-- Dashboard Header -->
+<header class="mb-10 flex justify-between items-end">
+<div>
+<h1 class="text-4xl tracking-tighter text-primary mb-2 uppercase">OPERATIONS_MANAGEMENT</h1>
+<p class="text-on-surface-variant max-w-2xl text-sm leading-relaxed">Real-time cryptographic telemetry and node integrity monitoring for the Monolith Core ecosystem.</p>
+<p class="text-[10px] mt-2 uppercase tracking-[0.2em] text-primary/60">MISSION_VISION_CHARTER</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-4 border border-outline-variant/10">
+<div class="w-3 h-3 rounded-full bg-primary sentinel-pulse"></div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">Core_Status</p>
+<p class="text-sm text-primary">VIGILANT_ACTIVE</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Large Focus Card -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-low rounded-xl p-6 relative overflow-hidden group border border-outline-variant/10">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-20 -mt-20 group-hover:bg-primary/10 transition-colors duration-500"></div>
+<div class="flex justify-between items-start mb-8 relative z-10">
+<div>
+<h3 class="text-lg text-on-surface mb-1">Global Encryption Pulse</h3>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">LATENCY: 12ms | THROUGHPUT: 4.2GB/s</p>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="insights">insights</span>
+</div>
+<div class="h-48 flex items-end gap-2 mb-4">
+<div class="w-full bg-surface-container-high h-[40%] rounded-t-sm"></div>
+<div class="w-full bg-surface-container-high h-[60%] rounded-t-sm"></div>
+<div class="w-full bg-surface-container-high h-[55%] rounded-t-sm"></div>
+<div class="w-full bg-primary/20 h-[80%] rounded-t-sm border-t border-primary"></div>
+<div class="w-full bg-surface-container-high h-[45%] rounded-t-sm"></div>
+<div class="w-full bg-surface-container-high h-[70%] rounded-t-sm"></div>
+<div class="w-full bg-surface-container-high h-[50%] rounded-t-sm"></div>
+<div class="w-full bg-surface-container-high h-[85%] rounded-t-sm"></div>
+</div>
+<div class="flex justify-between text-[10px] uppercase tracking-widest border-t border-outline-variant/10 pt-4 text-on-surface-variant">
+<span>00:00:00_UTC</span>
+<span>ACTIVE_TELEMETRY_STREAM</span>
+<span>12:00:00_UTC</span>
+</div>
+</section>
+<!-- Secondary High Card -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container-high rounded-xl p-6 flex flex-col justify-between border border-outline-variant/10">
+<div>
+<h3 class="text-lg text-on-surface mb-6">Threat Vector Analysis</h3>
+<div class="space-y-6">
+<div class="flex justify-between items-center">
+<span class="text-xs text-on-surface-variant">Brute_Force</span>
+<span class="text-sm text-on-surface">0.02%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[2%]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-on-surface-variant">SQL_Injection</span>
+<span class="text-sm text-on-surface">0.00%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[0%]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-on-surface-variant">DDoS_Buffer</span>
+<span class="text-sm text-on-surface">14.8%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[14.8%]"></div>
+</div>
+</div>
+</div>
+<button class="mt-8 text-xs text-primary uppercase tracking-widest flex items-center gap-2 hover:translate-x-1 transition-transform">
+                    VIEW_FULL_REPORT <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+<!-- Content List / Logs Section -->
+<section class="col-span-12 bg-surface-container-low rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="text-xs uppercase tracking-[0.15em]">Recent_Authentication_Events</h3>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest rounded-full text-[10px] tracking-widest text-on-surface-variant">FILTER: ALL</span>
+<span class="px-3 py-1 bg-surface-container-highest rounded-full text-[10px] tracking-widest text-on-surface-variant cursor-pointer hover:text-primary transition-colors">EXPORT_CSV</span>
+</div>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<div class="p-6 flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-6">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary" data-icon="lock_open">lock_open</span>
+</div>
+<div>
+<p class="text-sm">Admin_Login_Successful</p>
+<p class="text-[10px] text-on-surface-variant tracking-wider uppercase">ID: 0x8291_A | IP: 192.168.1.104</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm text-on-surface">14:22:01</p>
+<p class="text-[10px] uppercase text-on-surface-variant tracking-tighter">2_Minutes_Ago</p>
+</div>
+</div>
+<div class="p-6 flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-6">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant/5">
+<span class="material-symbols-outlined text-error" data-icon="gpp_bad">gpp_bad</span>
+</div>
+<div>
+<p class="text-sm">Unauthorized_Access_Attempt</p>
+<p class="text-[10px] text-on-surface-variant tracking-wider uppercase">ID: Unknown | IP: 45.22.10.8</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm text-error">13:58:12</p>
+<p class="text-[10px] uppercase text-on-surface-variant tracking-tighter">26_Minutes_Ago</p>
+</div>
+</div>
+<div class="p-6 flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-6">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant/5">
+<span class="material-symbols-outlined text-secondary" data-icon="sync_alt">sync_alt</span>
+</div>
+<div>
+<p class="text-sm">Key_Rotation_Initiated</p>
+<p class="text-[10px] text-on-surface-variant tracking-wider uppercase">Sector: 7G | Protocol: RSA-4096</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm text-on-surface">12:30:45</p>
+<p class="text-[10px] uppercase text-on-surface-variant tracking-tighter">1_Hour_Ago</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="flex justify-between items-center w-full px-8 py-4 fixed bottom-0 z-10 ml-64 w-[calc(100%-16rem)] bg-[#0c0e12] border-t border-[#333539]/10">
+<span class="text-[10px] tracking-[0.2em] uppercase text-[#c3c6d6]/50">© 2024 VIGILANT_MONOLITH_SECURITY_CORE</span>
+<div class="flex gap-8">
+<a class="text-[10px] tracking-[0.15em] uppercase text-[#c3c6d6]/50 hover:text-primary transition-colors" href="#">Privacy_Protocol</a>
+<a class="text-[10px] tracking-[0.15em] uppercase text-[#c3c6d6]/50 hover:text-primary transition-colors" href="#">System_Status</a>
+<a class="text-[10px] tracking-[0.15em] uppercase text-[#c3c6d6]/50 hover:text-primary transition-colors" href="#">Encrypted_Endpoint</a>
+</div>
+</footer>
+</body></html>

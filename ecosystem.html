@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Citadel Sentinel | Ecosystem Schema</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background-color: #111318;
+            color: #e2e2e8;
+            margin: 0;
+            font-weight: 300;
+        }
+        h1, h2, h3, h4, .font-bold, .font-extrabold, .font-black {
+            font-weight: 400 !important;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .node-connector {
+            background: linear-gradient(90deg, #ffbf00 0%, rgba(255, 191, 0, 0.2) 100%);
+        }
+        .pulse-glow {
+            box-shadow: 0 0 15px rgba(255, 191, 0, 0.15);
+        }
+        .grid-bg {
+            background-image: radial-gradient(rgba(67, 70, 83, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        /* Specific override for headers to ensure 400 weight as requested */
+        h1, h2, h3, h4 {
+            font-family: 'IBM Plex Mono', monospace !important;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ffbf00", /* Tactical Amber Accent */
+                        "primary-container": "#ffbf00",
+                        "on-primary-container": "#181309",
+                        surface: "#111318",
+                        "surface-container-low": "#1a1c20",
+                        "surface-container-high": "#241f14",
+                        "surface-container-highest": "#2f291e",
+                        "on-surface": "#e2e2e8",
+                        "on-surface-variant": "#9c8f78",
+                        "outline-variant": "#504532",
+                        error: "#ffb4ab",
+                        "inverse-primary": "#795900",
+                        "inverse-on-surface": "#363024",
+                        "tertiary-fixed-dim": "#00d9fc",
+                        "surface-container-lowest": "#0c0d10",
+                        "surface-variant": "#3a3428",
+                        "on-tertiary": "#003640",
+                        "on-secondary": "#402d00",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#04dcff",
+                        secondary: "#e5c27b",
+                        "surface-dim": "#111318",
+                        "on-secondary-container": "#d6b46f",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#261a00",
+                        "on-secondary-fixed-variant": "#5b4307",
+                        background: "#111318",
+                        "on-primary-fixed": "#261a00",
+                        "on-background": "#e2e2e8",
+                        outline: "#9c8f78",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#5c4300",
+                        "primary-fixed-dim": "#fbbc00",
+                        "primary-fixed": "#ffdfa0",
+                        "on-primary": "#402d00",
+                        "on-tertiary-container": "#005d6d",
+                        "on-tertiary-fixed": "#001f26",
+                        "secondary-container": "#5d4509",
+                        "secondary-fixed-dim": "#e5c27b",
+                        "secondary-fixed": "#ffdfa0",
+                        "tertiary-fixed": "#aaedff",
+                        "surface-bright": "#3f382d",
+                        "surface-container": "#241f14",
+                        tertiary: "#b4efff",
+                        "surface-tint": "#fbbc00",
+                        "inverse-surface": "#ede1d0"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0px", /* Sharper corners for hardened aesthetic */
+                        lg: "2px",
+                        xl: "4px",
+                        full: "9999px"
+                    },
+                    fontFamily: {
+                        headline: ["IBM Plex Mono"],
+                        body: ["IBM Plex Mono"],
+                        label: ["IBM Plex Mono"],
+                        display: "IBM Plex Mono"
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden">
+<!-- TopNavBar from Shared Components -->
+<nav class="w-full h-16 sticky top-0 z-50 bg-[#1a1c20] border-b border-outline-variant/20 flex justify-between items-center px-8">
+<div class="flex items-center gap-8">
+<span class="text-xl font-medium tracking-tighter text-on-surface">Citadel Sentinel</span>
+<div class="hidden md:flex gap-6">
+<a class="text-xs font-medium transition-colors text-on-surface-variant hover:text-primary" href="#">Nexus</a>
+<a class="text-xs font-medium transition-colors text-primary border-b border-primary pb-1" href="#">Schematics</a>
+<a class="text-xs font-medium transition-colors text-on-surface-variant hover:text-primary" href="#">Telemetry</a>
+<a class="text-xs font-medium transition-colors text-on-surface-variant hover:text-primary" href="#">Archives</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-[20px]">search</span>
+<input class="bg-surface-container-high border border-outline-variant/30 rounded py-2 pl-10 pr-4 text-xs w-64 focus:ring-1 focus:ring-primary focus:outline-none" placeholder="Search parameters..." type="text"/>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded transition-all">
+<span class="material-symbols-outlined text-primary text-[20px]">notifications</span>
+</button>
+<img alt="Security Commander Profile" class="w-8 h-8 rounded border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkiZaIBsfJqTqVlDKBkRju_OzCx87kt15-tN14izL0xqRmmmXCpeIzCfna5KQozn7hUavYZetez39_O-3qYJAJj63Fa1TJKW8OW9lFhbubsVcgrI1p8DJKWDbGTQdictDXkIPOxQyuHYkq_6dY9zkSkv4JZgSDD6YZDKLTHUNQcd7uSySur35JVCjliTfW0Q-Y8wYVvAwRKIpaRQlKweUOqWkAqlOGIYrCloggvdt7y3qQ-WxdevMfU3ZnDuPaaKqhzVygail_49i6"/>
+</div>
+</nav>
+<div class="flex">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 pt-20 bg-[#1a1c20] border-r border-outline-variant/20 flex flex-col px-4 py-6 gap-6 z-40 hidden lg:flex">
+<div class="mb-4 px-2">
+<h3 class="text-[10px] font-medium uppercase tracking-widest text-on-surface-variant opacity-50">Operations Management</h3>
+<p class="text-[10px] text-primary mt-1">Vigilance Active</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded transition-all text-xs" href="#">
+<span class="material-symbols-outlined text-primary text-[20px]">hub</span> Primary Synapse
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-xs bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined text-primary text-[20px]">admin_panel_settings</span> Vetting
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded transition-all text-xs" href="#">
+<span class="material-symbols-outlined text-primary text-[20px]">settings_applications</span> Execution
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded transition-all text-xs" href="#">
+<span class="material-symbols-outlined text-primary text-[20px]">biotech</span> Matrix Enrichment
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded transition-all text-xs" href="#">
+<span class="material-symbols-outlined text-primary text-[20px]">history_edu</span> System Health
+                </a>
+</nav>
+<div class="mt-auto pt-6 flex flex-col gap-2">
+<button class="bg-primary text-surface py-2 rounded text-[10px] font-bold mb-4 active:scale-95 transition-transform uppercase tracking-widest">Deploy Patch</button>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary transition-all text-xs" href="#">
+<span class="material-symbols-outlined text-primary text-[20px]">help_center</span> Support
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary transition-all text-xs" href="#">
+<span class="material-symbols-outlined text-primary text-[20px]">logout</span> Log Out
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 p-8 grid-bg min-h-screen">
+<!-- Header Section -->
+<header class="mb-12 max-w-5xl mx-auto">
+<div class="flex items-center gap-4 mb-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-medium tracking-[0.3em] text-primary uppercase">System Architecture</span>
+</div>
+<h1 class="text-4xl lg:text-5xl font-medium tracking-tighter text-on-surface mb-4">Ecosystem Schema</h1>
+<p class="text-on-surface-variant max-w-2xl leading-relaxed text-sm">Technical system architecture visualization for the Sentinel platform. Real-time telemetry monitoring the flow from neural synapse through tactical execution.</p>
+</header>
+<!-- Schema Visualization Grid -->
+<div class="max-w-6xl mx-auto relative">
+<!-- Vertical Progress Line -->
+<div class="absolute left-1/2 top-0 bottom-0 w-px bg-outline-variant/20 -translate-x-1/2 hidden lg:block"></div>
+<!-- I. THE PRIMARY SYNAPSE -->
+<section class="mb-20 relative z-10">
+<div class="flex flex-col items-center mb-10">
+<div class="bg-surface-container-lowest border border-outline-variant/30 px-6 py-2 rounded flex items-center gap-3 shadow-xl">
+<span class="text-[10px] font-medium text-primary">PHASE I</span>
+<span class="h-4 w-px bg-outline-variant/50"></span>
+<h2 class="text-xs font-medium tracking-[0.2em] uppercase">THE PRIMARY SYNAPSE</h2>
+<span class="ml-2 text-[9px] border border-primary/20 text-primary px-2 py-0.5 rounded">'Go' Condition</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-32 px-4 lg:px-20">
+<!-- Node 1 -->
+<div class="bg-surface-container-low p-6 rounded border border-outline-variant/20 border-l-2 border-l-primary pulse-glow relative group">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary text-[20px]">bolt</span>
+<span class="text-[9px] font-medium text-surface bg-primary px-2 py-0.5 rounded">ACTIVE</span>
+</div>
+<h3 class="text-base font-medium text-on-surface mb-1 uppercase tracking-wider">SOURCE ENERGY</h3>
+<p class="text-[11px] text-on-surface-variant mb-4 leading-relaxed">Raw Intuitive 'Force' vectoring through the primary neural uplink.</p>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-4/5"></div>
+</div>
+</div>
+<!-- Node 2 -->
+<div class="bg-surface-container-low p-6 rounded border border-outline-variant/20 border-l-2 border-l-primary pulse-glow relative group">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary text-[20px]">filter_alt</span>
+<span class="text-[9px] font-medium text-surface bg-primary px-2 py-0.5 rounded">FILTERING</span>
+</div>
+<h3 class="text-base font-medium text-on-surface mb-1 uppercase tracking-wider">COMMAND RELAY</h3>
+<p class="text-[11px] text-on-surface-variant mb-4 leading-relaxed">SRE Filter processing incoming telemetry for valid operational parameters.</p>
+<div class="flex gap-1">
+<div class="h-1 flex-1 bg-primary"></div>
+<div class="h-1 flex-1 bg-primary"></div>
+<div class="h-1 flex-1 bg-surface-container-highest"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- II. VETTING & READINESS GATES -->
+<section class="mb-20 relative z-10">
+<div class="flex flex-col items-center mb-10">
+<div class="bg-surface-container-lowest border border-outline-variant/30 px-6 py-2 rounded flex items-center gap-3 shadow-xl">
+<span class="text-[10px] font-medium text-primary">PHASE II</span>
+<span class="h-4 w-px bg-outline-variant/50"></span>
+<h2 class="text-xs font-medium tracking-[0.2em] uppercase">VETTING &amp; READINESS GATES</h2>
+<span class="ml-2 text-[9px] border border-outline-variant/30 text-on-surface-variant px-2 py-0.5 rounded">Pre-flight</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-4">
+<!-- Vetting Gate 1 -->
+<div class="bg-surface-container-low p-5 rounded border border-outline-variant/20 hover:border-primary/40 transition-all">
+<div class="w-10 h-10 rounded flex items-center justify-center mb-4 bg-primary/5 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-[20px]">shield_with_heart</span>
+</div>
+<h4 class="text-xs font-medium mb-2 tracking-wide uppercase">RESOURCE ESCROW</h4>
+<p class="text-[10px] text-on-surface-variant leading-relaxed mb-4">SRE Viability Test confirming sufficient overhead for task deployment.</p>
+<div class="pt-3 border-t border-outline-variant/10 flex items-center justify-between">
+<span class="text-[9px] opacity-40">#SC-902</span>
+<span class="material-symbols-outlined text-primary text-[20px]">shield_with_heart</span>
+</div>
+</div>
+<!-- Vetting Gate 2 -->
+<div class="bg-surface-container-low p-5 rounded border border-outline-variant/20 hover:border-primary/40 transition-all">
+<div class="w-10 h-10 rounded flex items-center justify-center mb-4 bg-primary/5 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-[20px]">construction</span>
+</div>
+<h4 class="text-xs font-medium mb-2 tracking-wide uppercase">CAPABILITY READY</h4>
+<p class="text-[10px] text-on-surface-variant leading-relaxed mb-4">Automated Tools UP check validating all secondary subsystems are online.</p>
+<div class="pt-3 border-t border-outline-variant/10 flex items-center justify-between">
+<span class="text-[9px] opacity-40">#SC-441</span>
+<span class="material-symbols-outlined text-primary text-[20px]">construction</span>
+</div>
+</div>
+<!-- Vetting Gate 3 -->
+<div class="bg-surface-container-low p-5 rounded border border-outline-variant/20 hover:border-primary/40 transition-all">
+<div class="w-10 h-10 rounded flex items-center justify-center mb-4 bg-primary/5 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-[20px]">psychology</span>
+</div>
+<h4 class="text-xs font-medium mb-2 tracking-wide uppercase">INTEL VETTING</h4>
+<p class="text-[10px] text-on-surface-variant leading-relaxed mb-4">Strategic Stress-Test analyzing scenario-based contingency variables.</p>
+<div class="pt-3 border-t border-outline-variant/10 flex items-center justify-between">
+<span class="text-[9px] opacity-40">#SC-118</span>
+<span class="material-symbols-outlined text-primary text-sm animate-spin">refresh</span>
+</div>
+</div>
+<!-- Vetting Gate 4 -->
+<div class="bg-surface-container-low p-5 rounded border border-outline-variant/20 hover:border-primary/40 transition-all">
+<div class="w-10 h-10 rounded flex items-center justify-center mb-4 bg-primary/5 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-[20px]">shield</span>
+</div>
+<h4 class="text-xs font-medium mb-2 tracking-wide uppercase">OPERATIONAL SEC</h4>
+<p class="text-[10px] text-on-surface-variant leading-relaxed mb-4">Perimeter Hardened verification for encrypted execution tunnel.</p>
+<div class="pt-3 border-t border-outline-variant/10 flex items-center justify-between">
+<span class="text-[9px] opacity-40">#SC-002</span>
+<span class="material-symbols-outlined text-on-surface-variant/30 text-sm">hourglass_empty</span>
+</div>
+</div>
+</div>
+</section>
+<!-- III. THE EXECUTION PHASE -->
+<section class="mb-20 relative z-10">
+<div class="flex flex-col items-center mb-10">
+<div class="bg-surface-container-lowest border border-outline-variant/30 px-6 py-2 rounded flex items-center gap-3 shadow-xl">
+<span class="text-[10px] font-medium text-primary">PHASE III</span>
+<span class="h-4 w-px bg-outline-variant/50"></span>
+<h2 class="text-xs font-medium tracking-[0.2em] uppercase">THE EXECUTION PHASE</h2>
+<span class="ml-2 text-[9px] border border-primary/20 text-primary px-2 py-0.5 rounded">'The Strike'</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 max-w-4xl mx-auto">
+<!-- Execution Card 1 -->
+<div class="relative">
+<div class="absolute -top-3 -right-3 bg-primary text-[9px] font-medium text-surface px-3 py-1 rounded z-20 uppercase tracking-widest">CRITICAL PATH</div>
+<div class="bg-surface-container-low p-8 rounded border border-primary/20 shadow-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 bg-primary/10 border border-primary/20 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-primary text-[20px]">precision_manufacturing</span>
+</div>
+<div>
+<h3 class="text-lg font-medium text-on-surface leading-tight uppercase tracking-tight">TACTICAL EXECUTION</h3>
+<p class="text-[10px] text-primary/70 uppercase">High-Fidelity Ritual Deployment</p>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-6">Real-time synchronization of all assets. Final confirmation of environmental variables before primary discharge sequence.</p>
+<div class="grid grid-cols-3 gap-2">
+<div class="h-1 bg-primary"></div>
+<div class="h-1 bg-primary"></div>
+<div class="h-1 bg-surface-container-highest"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Execution Card 2 -->
+<div class="bg-surface-container-lowest p-8 rounded border border-outline-variant/20 flex flex-col justify-center">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 bg-surface-container-low border border-outline-variant/20 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-primary text-[20px]">gavel</span>
+</div>
+<div>
+<h3 class="text-lg font-medium text-on-surface leading-tight uppercase tracking-tight">GOVERNANCE AUDIT</h3>
+<p class="text-[10px] text-on-surface-variant uppercase">Compliance &amp; Veto Authority</p>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-6">Autonomous legal and ethical check verifying action against predefined policy frameworks.</p>
+<button class="w-full py-2 border border-outline-variant/30 rounded text-[10px] font-medium hover:bg-surface-container-low transition-colors uppercase tracking-widest">Review Protocols</button>
+</div>
+</div>
+</section>
+<!-- IV. THE MATRIX ENRICHMENT -->
+<section class="pb-24 relative z-10">
+<div class="flex flex-col items-center mb-10">
+<div class="bg-surface-container-lowest border border-outline-variant/30 px-6 py-2 rounded flex items-center gap-3 shadow-xl">
+<span class="text-[10px] font-medium text-primary">PHASE IV</span>
+<span class="h-4 w-px bg-outline-variant/50"></span>
+<h2 class="text-xs font-medium tracking-[0.2em] uppercase">THE MATRIX ENRICHMENT</h2>
+<span class="ml-2 text-[9px] border border-primary/20 text-primary px-2 py-0.5 rounded">Grand Loop</span>
+</div>
+</div>
+<div class="max-w-3xl mx-auto px-4">
+<div class="bg-surface-container-low p-10 rounded border border-primary/10 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none grayscale">
+<img class="w-full h-full object-cover" data-alt="abstract digital visualization of complex data networks and flowing information in dark blue and cyan tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMeUzFdSeRvbGMo9S3cgwkLgOUgxdIR3XPFQ8srtDnElZm1LAQNiiiU5ReWk6jcW1n-1LmnOujxKrhM2ewLUuUZL8j1JsfZkSP4OhaMZla_z4DHIs-di54RgDsm-zm9xMXR974UiZbzxHv75xxQnFG8HHL-2QA_Cv4rhAgX9q-gXcW0f0ovORokIF67jtI3epw4rVljSdkGLnOOw1pvMv8A3JoaYLdwnA2ZMWKhb608F4j59GhO3XoB3U2I422rjzZBRElj7nHRpPa"/>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row gap-10 items-center">
+<div class="flex-1">
+<h3 class="text-2xl font-medium tracking-tight mb-4 uppercase">Closing the Loop</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-6">Post-execution telemetry is ingested back into the Primary Synapse, evolving the system's defensive intelligence through continuous recursive learning.</p>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-[10px] font-medium tracking-widest">RECURSION</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary/30"></span>
+<span class="text-[10px] font-medium tracking-widest">EVOLUTION</span>
+</div>
+</div>
+</div>
+<div class="w-32 h-32 flex-shrink-0 relative">
+<div class="absolute inset-0 rounded-full border border-dashed border-primary/30 animate-[spin_20s_linear_infinite]"></div>
+<div class="absolute inset-3 rounded-full border border-primary/20"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">visibility</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Floating System Indicator -->
+<div class="fixed bottom-8 right-8 z-50">
+<div class="bg-surface-container-lowest/90 backdrop-blur border border-outline-variant/30 p-4 rounded shadow-2xl flex items-center gap-4">
+<div class="relative">
+<div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+<div class="absolute inset-0 bg-primary/20 rounded-full scale-[2] animate-ping"></div>
+</div>
+<div>
+<p class="text-[9px] font-medium text-on-surface-variant uppercase tracking-widest">System Health</p>
+<p class="text-xs font-medium text-primary tracking-tighter uppercase">Vigilant Active</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
