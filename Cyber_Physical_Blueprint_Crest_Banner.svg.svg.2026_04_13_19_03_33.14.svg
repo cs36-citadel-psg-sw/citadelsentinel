@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1200"
+   height="400"
+   viewBox="0 0 1200 400"
+   fill="none"
+   version="1.1"
+   id="svg24"
+   sodipodi:docname="Cyber_Physical_Blueprint_Crest_Banner.svg.svg"
+   inkscape:export-filename="Cyber_Physical_Blueprint_Crest_Banner.svg.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview24"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <rect
+     width="1200"
+     height="400"
+     fill="#050505"
+     id="rect1" />
+  <defs
+     id="defs2">
+    <pattern
+       id="master-grid"
+       width="60"
+       height="60"
+       patternUnits="userSpaceOnUse">
+      <path
+         d="M 60 0 L 0 0 0 60"
+         fill="none"
+         stroke="#111111"
+         stroke-width="1"
+         id="path1" />
+      <path
+         d="M 60 30 L 0 30 M 30 60 L 30 0"
+         fill="none"
+         stroke="#0A0A0A"
+         stroke-width="0.5"
+         id="path2" />
+    </pattern>
+  </defs>
+  <rect
+     width="1200"
+     height="400"
+     fill="url(#master-grid)"
+     id="rect2" />
+  <rect
+     x="0"
+     y="0"
+     width="1200"
+     height="6"
+     fill="#FFBF00"
+     id="rect3" />
+  <rect
+     x="40"
+     y="60"
+     width="8"
+     height="280"
+     fill="#1A1A1A"
+     id="rect4" />
+  <rect
+     x="40"
+     y="100"
+     width="8"
+     height="140"
+     fill="#FFBF00"
+     id="rect5" />
+  <text
+     x="70"
+     y="100"
+     fill="#FDFDFD"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="34"
+     font-weight="bold"
+     letter-spacing="2"
+     id="text5">CYBER-PHYSICAL INTELLIGENCE</text>
+  <text
+     x="70"
+     y="150"
+     fill="#FFBF00"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="28"
+     font-weight="bold"
+     letter-spacing="4"
+     id="text6">ARCHITECT'S MANUAL</text>
+  <text
+     x="70"
+     y="190"
+     fill="#888888"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="14"
+     font-weight="bold"
+     letter-spacing="2"
+     id="text7">ENTERPRISE AUTONOMICS // ABSOLUTE RESILIENCE</text>
+  <text
+     x="70"
+     y="260"
+     fill="#555555"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="12"
+     letter-spacing="1"
+     id="text8">SOVEREIGN INDEX (Si) &gt; 60% : MERCENARY DRIFT BLOCKED</text>
+  <text
+     x="70"
+     y="280"
+     fill="#555555"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="12"
+     letter-spacing="1"
+     id="text9">INFRASTRUCTURE DEBT (Id) = 0 : SSoT ENFORCED</text>
+  <text
+     x="70"
+     y="300"
+     fill="#555555"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="12"
+     letter-spacing="1"
+     id="text10">Vp = (I x M) / Fc : DUAL WEB3/WEB2.5 ECONOMY ACTIVE</text>
+  <rect
+     x="680"
+     y="50"
+     width="480"
+     height="300"
+     rx="4"
+     stroke="#222222"
+     stroke-width="2"
+     fill="none"
+     id="rect10" />
+  <text
+     x="700"
+     y="80"
+     fill="#FDFDFD"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="12"
+     font-weight="bold"
+     letter-spacing="2"
+     id="text11">LEFT OF BOOM: SELF-HEALING ARCHITECTURE</text>
+  <rect
+     x="700"
+     y="120"
+     width="120"
+     height="40"
+     fill="#0A0A0A"
+     stroke="#333333"
+     stroke-width="1.5"
+     id="rect11" />
+  <text
+     x="760"
+     y="140"
+     fill="#FDFDFD"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="10"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text12">EDGE DETECTION</text>
+  <text
+     x="760"
+     y="152"
+     fill="#888888"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="8"
+     text-anchor="middle"
+     id="text13">Cloudflare APIs</text>
+  <path
+     d="M 820 140 L 880 140"
+     stroke="#FF4444"
+     stroke-width="2"
+     stroke-dasharray="4 2"
+     marker-end="url(#architect-arrow)"
+     id="path13" />
+  <circle
+     cx="850"
+     cy="140"
+     r="12"
+     fill="#140505"
+     stroke="#FF4444"
+     stroke-width="1"
+     id="circle13" />
+  <text
+     x="850"
+     y="143"
+     fill="#FF4444"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="8"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text14">X</text>
+  <rect
+     x="880"
+     y="120"
+     width="120"
+     height="40"
+     fill="#0A0A0A"
+     stroke="#FFBF00"
+     stroke-width="1.5"
+     id="rect14" />
+  <text
+     x="940"
+     y="140"
+     fill="#FFBF00"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="10"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text15">IaC REBUILD</text>
+  <text
+     x="940"
+     y="152"
+     fill="#888888"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="8"
+     text-anchor="middle"
+     id="text16">Terraform / n8n</text>
+  <rect
+     x="880"
+     y="220"
+     width="120"
+     height="60"
+     fill="#0A0A0A"
+     stroke="#FDFDFD"
+     stroke-width="1.5"
+     id="rect16" />
+  <text
+     x="940"
+     y="240"
+     fill="#FDFDFD"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="10"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text17">MIG AUTO-HEAL</text>
+  <text
+     x="940"
+     y="252"
+     fill="#888888"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="8"
+     text-anchor="middle"
+     id="text18">GCP Instances</text>
+  <circle
+     cx="910"
+     cy="265"
+     r="4"
+     fill="#333333"
+     id="circle18" />
+  <circle
+     cx="940"
+     cy="265"
+     r="4"
+     fill="#FFBF00"
+     id="circle19" />
+  <circle
+     cx="970"
+     cy="265"
+     r="4"
+     fill="#FDFDFD"
+     id="circle20" />
+  <rect
+     x="1040"
+     y="170"
+     width="100"
+     height="40"
+     fill="#141414"
+     stroke="#333333"
+     stroke-width="1"
+     id="rect20" />
+  <text
+     x="1090"
+     y="190"
+     fill="#888888"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="10"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text20">POST-MORTEM</text>
+  <text
+     x="1090"
+     y="202"
+     fill="#555555"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="8"
+     text-anchor="middle"
+     id="text21">Google Docs</text>
+  <path
+     d="M 940 160 L 940 220"
+     stroke="#FDFDFD"
+     stroke-width="1.5"
+     marker-end="url(#architect-arrow)"
+     id="path21" />
+  <path
+     d="M 1000 140 L 1090 140 L 1090 170"
+     stroke="#555555"
+     stroke-width="1.5"
+     fill="none"
+     marker-end="url(#architect-arrow)"
+     id="path22" />
+  <path
+     d="M 1000 250 L 1090 250 L 1090 210"
+     stroke="#555555"
+     stroke-width="1.5"
+     fill="none"
+     marker-end="url(#architect-arrow)"
+     id="path23" />
+  <rect
+     x="700"
+     y="280"
+     width="140"
+     height="30"
+     rx="2"
+     fill="#050505"
+     stroke="#FFBF00"
+     stroke-width="1"
+     id="rect23" />
+  <text
+     x="770"
+     y="299"
+     fill="#FFBF00"
+     font-family="'JetBrains Mono', monospace, sans-serif"
+     font-size="9"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text23">ANALOG_OUT: ARMED</text>
+  <path
+     d="M 770 280 L 770 260 L 880 260"
+     stroke="#FFBF00"
+     stroke-width="1"
+     stroke-dasharray="2 2"
+     fill="none"
+     id="path24" />
+  <defs
+     id="defs24">
+    <marker
+       id="architect-arrow"
+       markerWidth="6"
+       markerHeight="6"
+       refX="0"
+       refY="3"
+       orient="auto">
+      <polygon
+         points="0 0, 6 3, 0 6"
+         fill="context-stroke"
+         id="polygon24" />
+    </marker>
+  </defs>
+</svg>

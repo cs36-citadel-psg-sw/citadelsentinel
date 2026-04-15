@@ -1,0 +1,64 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  
+  <rect width="1200" height="400" fill="#050505"/>
+  
+  <defs>
+    <pattern id="master-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#111111" stroke-width="1"/>
+      <path d="M 60 30 L 0 30 M 30 60 L 30 0" fill="none" stroke="#0A0A0A" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="url(#master-grid)"/>
+
+  <rect x="0" y="0" width="1200" height="6" fill="#FFBF00"/>
+
+  <rect x="40" y="60" width="8" height="280" fill="#1A1A1A"/>
+  <rect x="40" y="100" width="8" height="140" fill="#FFBF00"/>
+
+  <text x="70" y="100" fill="#FDFDFD" font-family="'JetBrains Mono', monospace, sans-serif" font-size="34" font-weight="bold" letter-spacing="2">CYBER-PHYSICAL INTELLIGENCE</text>
+  <text x="70" y="150" fill="#FFBF00" font-family="'JetBrains Mono', monospace, sans-serif" font-size="28" font-weight="bold" letter-spacing="4">ARCHITECT'S MANUAL</text>
+  <text x="70" y="190" fill="#888888" font-family="'JetBrains Mono', monospace, sans-serif" font-size="14" font-weight="bold" letter-spacing="2">ENTERPRISE AUTONOMICS // ABSOLUTE RESILIENCE</text>
+  
+  <text x="70" y="260" fill="#555555" font-family="'JetBrains Mono', monospace, sans-serif" font-size="12" letter-spacing="1">SOVEREIGN INDEX (Si) > 60% : MERCENARY DRIFT BLOCKED</text>
+  <text x="70" y="280" fill="#555555" font-family="'JetBrains Mono', monospace, sans-serif" font-size="12" letter-spacing="1">INFRASTRUCTURE DEBT (Id) = 0 : SSoT ENFORCED</text>
+  <text x="70" y="300" fill="#555555" font-family="'JetBrains Mono', monospace, sans-serif" font-size="12" letter-spacing="1">Vp = (I x M) / Fc : DUAL WEB3/WEB2.5 ECONOMY ACTIVE</text>
+
+  <rect x="680" y="50" width="480" height="300" rx="4" stroke="#222222" stroke-width="2" fill="none"/>
+  <text x="700" y="80" fill="#FDFDFD" font-family="'JetBrains Mono', monospace, sans-serif" font-size="12" font-weight="bold" letter-spacing="2">LEFT OF BOOM: SELF-HEALING ARCHITECTURE</text>
+
+  <rect x="700" y="120" width="120" height="40" fill="#0A0A0A" stroke="#333333" stroke-width="1.5"/>
+  <text x="760" y="140" fill="#FDFDFD" font-family="'JetBrains Mono', monospace, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">EDGE DETECTION</text>
+  <text x="760" y="152" fill="#888888" font-family="'JetBrains Mono', monospace, sans-serif" font-size="8" text-anchor="middle">Cloudflare APIs</text>
+
+  <path d="M 820 140 L 880 140" stroke="#FF4444" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#architect-arrow)"/>
+  <circle cx="850" cy="140" r="12" fill="#140505" stroke="#FF4444" stroke-width="1"/>
+  <text x="850" y="143" fill="#FF4444" font-family="'JetBrains Mono', monospace, sans-serif" font-size="8" font-weight="bold" text-anchor="middle">X</text>
+
+  <rect x="880" y="120" width="120" height="40" fill="#0A0A0A" stroke="#FFBF00" stroke-width="1.5"/>
+  <text x="940" y="140" fill="#FFBF00" font-family="'JetBrains Mono', monospace, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">IaC REBUILD</text>
+  <text x="940" y="152" fill="#888888" font-family="'JetBrains Mono', monospace, sans-serif" font-size="8" text-anchor="middle">Terraform / n8n</text>
+
+  <rect x="880" y="220" width="120" height="60" fill="#0A0A0A" stroke="#FDFDFD" stroke-width="1.5"/>
+  <text x="940" y="240" fill="#FDFDFD" font-family="'JetBrains Mono', monospace, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">MIG AUTO-HEAL</text>
+  <text x="940" y="252" fill="#888888" font-family="'JetBrains Mono', monospace, sans-serif" font-size="8" text-anchor="middle">GCP Instances</text>
+  <circle cx="910" cy="265" r="4" fill="#333333"/>
+  <circle cx="940" cy="265" r="4" fill="#FFBF00"/> <circle cx="970" cy="265" r="4" fill="#FDFDFD"/>
+
+  <rect x="1040" y="170" width="100" height="40" fill="#141414" stroke="#333333" stroke-width="1"/>
+  <text x="1090" y="190" fill="#888888" font-family="'JetBrains Mono', monospace, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">POST-MORTEM</text>
+  <text x="1090" y="202" fill="#555555" font-family="'JetBrains Mono', monospace, sans-serif" font-size="8" text-anchor="middle">Google Docs</text>
+
+  <path d="M 940 160 L 940 220" stroke="#FDFDFD" stroke-width="1.5" marker-end="url(#architect-arrow)"/>
+  <path d="M 1000 140 L 1090 140 L 1090 170" stroke="#555555" stroke-width="1.5" fill="none" marker-end="url(#architect-arrow)"/>
+  <path d="M 1000 250 L 1090 250 L 1090 210" stroke="#555555" stroke-width="1.5" fill="none" marker-end="url(#architect-arrow)"/>
+
+  <rect x="700" y="280" width="140" height="30" rx="2" fill="#050505" stroke="#FFBF00" stroke-width="1"/>
+  <text x="770" y="299" fill="#FFBF00" font-family="'JetBrains Mono', monospace, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">ANALOG_OUT: ARMED</text>
+  <path d="M 770 280 L 770 260 L 880 260" stroke="#FFBF00" stroke-width="1" stroke-dasharray="2 2" fill="none"/>
+
+  <defs>
+    <marker id="architect-arrow" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="0 0, 6 3, 0 6" fill="context-stroke" />
+    </marker>
+  </defs>
+</svg>
